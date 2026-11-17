@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SendPro | Bulk SMS for Business — Powered by Lordzico</title>
+<meta name="description" content="Send bulk SMS campaigns, OTPs and alerts to customers across MTN, Telecel and AT in Ghana. Fast, reliable and easy to track.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f8fc;
+    --surface: #ffffff;
+    --text: #0f1224;
+    --muted: #5b6078;
+    --border: #e4e7f2;
+    --primary: #5b4bff;
+    --primary-2: #8b5cf6;
+    --accent: #10b981;
+    --shadow: 0 10px 30px rgba(20, 24, 60, 0.08);
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0b0d1a;
+      --surface: #14172b;
+      --text: #eef0ff;
+      --muted: #9aa0bf;
+      --border: #242843;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0b0d1a; --surface: #14172b; --text: #eef0ff;
+    --muted: #9aa0bf; --border: #242843; color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+  body {
+    font-family: "Plus Jakarta Sans", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6;
+  }
+  .wrap { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+
+  /* Nav */
+  nav {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
+    backdrop-filter: blur(12px); border-bottom: 1px solid var(--border);
+  }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 66px; }
+  .logo { font-weight: 800; font-size: 1.25rem; text-decoration: none; color: var(--text); display: flex; align-items: center; gap: 8px; }
+  .logo-mark {
+    width: 32px; height: 32px; border-radius: 9px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-2));
+    display: grid; place-items: center; color: #fff; font-size: 1rem;
+  }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-weight: 500; font-size: 0.95rem; }
+  .nav-links a:hover { color: var(--text); }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 12px 22px; border-radius: 12px; font-weight: 600; font-size: 0.95rem;
+    text-decoration: none; border: none; cursor: pointer; font-family: inherit;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: linear-gradient(135deg, var(--primary), var(--primary-2)); color: #fff; box-shadow: 0 8px 20px rgba(91, 75, 255, .3); }
+  .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
+  .btn-sm { padding: 9px 16px; font-size: 0.875rem; }
+
+  /* Hero */
+  .hero { padding: 80px 0 60px; text-align: center; }
+  .pill {
+    display: inline-block; padding: 6px 14px; border-radius: 999px;
+    background: color-mix(in srgb, var(--primary) 12%, transparent);
+    color: var(--primary); font-weight: 600; font-size: 0.85rem; margin-bottom: 20px;
+  }
+  h1 { font-size: clamp(2.2rem, 5.5vw, 3.6rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; max-width: 800px; margin: 0 auto 20px; }
+  .grad {
+    background: linear-gradient(135deg, var(--primary), var(--primary-2));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .lead { color: var(--muted); font-size: 1.15rem; max-width: 620px; margin: 0 auto 32px; }
+  .hero-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 56px; }
+  .stat { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 20px; box-shadow: var(--shadow); }
+  .stat strong { display: block; font-size: 1.7rem; font-weight: 800; }
+  .stat span { color: var(--muted); font-size: 0.9rem; }
+
+  section { padding: 70px 0; }
+  .eyebrow { color: var(--primary); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: .08em; text-align: center; }
+  h2 { font-size: clamp(1.7rem, 3.5vw, 2.4rem); font-weight: 800; text-align: center; margin: 8px 0 12px; letter-spacing: -0.01em; }
+  .sub { color: var(--muted); text-align: center; max-width: 560px; margin: 0 auto 44px; }
+
+  /* Features */
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 18px;
+    padding: 28px; box-shadow: var(--shadow);
+  }
+  .icon {
+    width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center;
+    background: color-mix(in srgb, var(--primary) 14%, transparent); font-size: 1.3rem; margin-bottom: 16px;
+  }
+  .card h3 { font-size: 1.1rem; margin-bottom: 8px; }
+  .card p { color: var(--muted); font-size: 0.95rem; }
+
+  /* Compose demo */
+  .compose {
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 22px;
+    padding: 32px; box-shadow: var(--shadow);
+  }
+  label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 8px; }
+  input, textarea, select {
+    width: 100%; font-family: inherit; font-size: 0.95rem; color: var(--text);
+    background: var(--bg); border: 1px solid var(--border); border-radius: 12px;
+    padding: 12px 14px; margin-bottom: 18px; outline: none;
+  }
+  input:focus, textarea:focus, select:focus { border-color: var(--primary); box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 20%, transparent); }
+  textarea { min-height: 150px; resize: vertical; }
+  .hint { color: var(--muted); font-size: 0.8rem; margin-top: -12px; margin-bottom: 16px; }
+  .summary { background: var(--bg); border-radius: 16px; padding: 22px; border: 1px dashed var(--border); }
+  .summary h4 { font-size: 0.95rem; margin-bottom: 14px; }
+  .row { display: flex; justify-content: space-between; padding: 8px 0; font-size: 0.93rem; border-bottom: 1px solid var(--border); }
+  .row:last-of-type { border-bottom: none; }
+  .row b { font-weight: 700; }
+  .total { font-size: 1.4rem; font-weight: 800; color: var(--primary); margin: 14px 0 18px; }
+  .summary .btn { width: 100%; }
+  .toast {
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(120px);
+    background: var(--text); color: var(--bg); padding: 14px 22px; border-radius: 12px;
+    font-weight: 600; font-size: 0.92rem; transition: transform .35s ease; z-index: 50; max-width: 90vw;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* Pricing */
+  .pricing { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; }
+  .plan { display: flex; flex-direction: column; }
+  .plan.featured { border: 2px solid var(--primary); position: relative; }
+  .badge {
+    position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+    background: var(--primary); color: #fff; padding: 4px 14px; border-radius: 999px; font-size: 0.78rem; font-weight: 700;
+  }
+  .plan h3 { font-size: 1.2rem; }
+  .price { font-size: 2.2rem; font-weight: 800; margin: 12px 0 4px; }
+  .price small { font-size: 0.95rem; color: var(--muted); font-weight: 500; }
+  .plan ul { list-style: none; margin: 18px 0 26px; flex: 1; }
+  .plan li { padding: 7px 0; color: var(--muted); font-size: 0.94rem; display: flex; gap: 10px; }
+  .plan li::before { content: "✓"; color: var(--accent); font-weight: 800; }
+  .plan .btn { width: 100%; }
+
+  /* CTA */
+  .cta {
+    background: linear-gradient(135deg, var(--primary), var(--primary-2));
+    border-radius: 24px; padding: 56px 28px; text-align: center; color: #fff;
+  }
+  .cta h2 { color: #fff; }
+  .cta p { opacity: .9; margin-bottom: 26px; }
+  .cta .btn { background: #fff; color: var(--primary); }
+
+  footer { border-top: 1px solid var(--border); padding: 36px 0; margin-top: 40px; }
+  .foot { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  .foot p { color: var(--muted); font-size: 0.9rem; }
+  .powered {
+    display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px;
+    background: var(--surface); border: 1px solid var(--border); font-size: 0.85rem; color: var(--muted);
+  }
+  .powered b { color: var(--text); }
+  .powered .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+
+  @media (max-width: 860px) {
+    .nav-links { display: none; }
+    .grid-3, .pricing { grid-template-columns: 1fr; }
+    .compose { grid-template-columns: 1fr; padding: 22px; }
+    .stats { grid-template-columns: 1fr; }
+    .hero { padding: 56px 0 40px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#" class="logo"><span class="logo-mark">✉</span> SendPro</a>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#send">Send SMS</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div style="display:flex;gap:10px">
+      <a href="mailto:Agyeievansboamah@gmail.com?subject=Login%20help" class="btn btn-ghost btn-sm">Log in</a>
+      <a href="#pricing" class="btn btn-primary btn-sm">Get started</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="pill">Trusted bulk SMS for Ghanaian businesses</span>
+    <h1>Reach every customer in <span class="grad">seconds</span>, not days.</h1>
+    <p class="lead">Send bulk SMS campaigns, OTPs and alerts through one fast, reliable platform. Personalise messages, schedule delivery, and track every message in real time.</p>
+    <div class="hero-cta">
+      <a href="#pricing" class="btn btn-primary">Start sending free</a>
+      <a href="#send" class="btn btn-ghost">Try the composer</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><strong>99.9%</strong><span>Delivery uptime</span></div>
+      <div class="stat"><strong>&lt; 3 sec</strong><span>Average delivery time</span></div>
+      <div class="stat"><strong>MTN · Telecel · AT</strong><span>All major networks</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="features">
+  <div class="wrap">
+    <div class="eyebrow">Features</div>
+    <h2>Everything you need to message at scale</h2>
+    <p class="sub">Built for businesses that send thousands of messages a day and need them to land.</p>
+    <div class="grid-3">
+      <div class="card"><div class="icon">📣</div><h3>Bulk campaigns</h3><p>Upload a contact list or paste numbers. Send to thousands at once with automatic duplicate and format cleanup.</p></div>
+      <div class="card"><div class="icon">🧩</div><h3>Personalisation</h3><p>Insert names and custom fields like {name} or {amount} so every recipient gets a message that feels one-to-one.</p></div>
+      <div class="card"><div class="icon">⏰</div><h3>Scheduling</h3><p>Plan campaigns for the perfect moment and let them go out automatically, even when your team is offline.</p></div>
+      <div class="card"><div class="icon">🔐</div><h3>OTP & alerts</h3><p>Dedicated, high-priority routes for one-time passwords, payment confirmations and transactional alerts.</p></div>
+      <div class="card"><div class="icon">📊</div><h3>Live reports</h3><p>See sent, delivered and failed counts per campaign, with exportable logs for your records.</p></div>
+      <div class="card"><div class="icon">👥</div><h3>Team access</h3><p>Give staff their own logins, set sending limits, and keep a clear audit trail of who sent what.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="send">
+  <div class="wrap">
+    <div class="eyebrow">Try it</div>
+    <h2>Write once, see the cost instantly</h2>
+    <p class="sub">Estimate your campaign before you send. Message length and recipient count are calculated for you.</p>
+    <div class="compose">
+      <div>
+        <label for="sender">Sender ID</label>
+        <input id="sender" maxlength="11" value="YourBrand" placeholder="Up to 11 characters">
+        <label for="recipients">Recipients</label>
+        <textarea id="recipients" placeholder="Paste phone numbers, one per line or comma separated">0241234567
+0551234567
+0201234567
+0271234567</textarea>
+        <div class="hint">Local and international formats accepted. Duplicates are removed automatically.</div>
+        <label for="message">Message</label>
+        <textarea id="message">Hi {name}, your order is ready for pickup. Thank you for shopping with us!</textarea>
+        <div class="hint" id="charHint">0 characters</div>
+      </div>
+      <div class="summary">
+        <h4>Campaign summary</h4>
+        <div class="row"><span>Valid recipients</span><b id="countRec">0</b></div>
+        <div class="row"><span>SMS segments per message</span><b id="segs">1</b></div>
+        <div class="row"><span>Total messages</span><b id="totalMsgs">0</b></div>
+        <div class="row"><span>Rate per message</span><b>GH₵ 0.03</b></div>
+        <div class="total">Estimated cost: <span id="cost">GH₵ 0.00</span></div>
+        <button class="btn btn-primary" id="sendBtn">Send campaign</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="eyebrow">Pricing</div>
+    <h2>Simple pricing that scales with you</h2>
+    <p class="sub">Pay only for what you send. Top up your wallet and start immediately. No monthly lock-in.</p>
+    <div class="pricing">
+      <div class="card plan">
+        <h3>Starter</h3>
+        <div class="price">GH₵ 0.04 <small>/ message</small></div>
+        <p style="color:var(--muted);font-size:.93rem">For small shops and freelancers getting started.</p>
+        <ul>
+          <li>Up to 5,000 messages / month</li>
+          <li>Bulk sending & contacts</li>
+          <li>Standard delivery reports</li>
+          <li>Email support</li>
+        </ul>
+        <a href="#contact" class="btn btn-ghost">Choose Starter</a>
+      </div>
+      <div class="card plan featured">
+        <span class="badge">Most popular</span>
+        <h3>Business</h3>
+        <div class="price">GH₵ 0.03 <small>/ message</small></div>
+        <p style="color:var(--muted);font-size:.93rem">For growing teams running regular campaigns.</p>
+        <ul>
+          <li>Unlimited messages</li>
+          <li>Scheduling & personalisation</li>
+          <li>Live reports & exports</li>
+          <li>Team accounts & API access</li>
+          <li>Priority support</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary">Choose Business</a>
+      </div>
+      <div class="card plan">
+        <h3>Enterprise</h3>
+        <div class="price">Custom</div>
+        <p style="color:var(--muted);font-size:.93rem">Volume pricing and dedicated routes for large organisations.</p>
+        <ul>
+          <li>Dedicated sender routes</li>
+          <li>Custom integrations</li>
+          <li>Account manager</li>
+          <li>SLA-backed uptime</li>
+        </ul>
+        <a href="#contact" class="btn btn-ghost">Talk to sales</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:20px">
+  <div class="wrap">
+    <div class="cta">
+      <h2>Ready to start messaging your customers?</h2>
+      <p>Create your account in minutes and send your first campaign today.</p>
+      <a href="mailto:Agyeievansboamah@gmail.com?subject=Create%20my%20SendPro%20account" class="btn">Create free account</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <p>© 2026 SendPro. All rights reserved.</p>
+    </div>
+    <div class="powered"><span class="dot"></span> Powered by <b>Lordzico</b></div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  const recEl = document.getElementById('recipients');
+  const msgEl = document.getElementById('message');
+  const senderEl = document.getElementById('sender');
+  const countRec = document.getElementById('countRec');
+  const segsEl = document.getElementById('segs');
+  const totalEl = document.getElementById('totalMsgs');
+  const costEl = document.getElementById('cost');
+  const charHint = document.getElementById('charHint');
+  const RATE = 0.03;
+
+  function validNumbers() {
+    const raw = recEl.value.split(/[\n,;\s]+/).map(n => n.trim()).filter(Boolean);
+    const set = new Set();
+    raw.forEach(n => {
+      let d = n.replace(/[^\d+]/g, '');
+      if (d.startsWith('+233')) d = '0' + d.slice(4);
+      else if (d.startsWith('233')) d = '0' + d.slice(3);
+      if (/^0\d{9}$/.test(d)) set.add(d);
+    });
+    return set.size;
+  }
+
+  function segments(text) {
+    const gsm = /^[\x00-\x7F€]*$/.test(text);
+    const len = text.length;
+    if (len === 0) return 0;
+    const single = gsm ? 160 : 70, multi = gsm ? 153 : 67;
+    return len <= single ? 1 : Math.ceil(len / multi);
+  }
+
+  function update() {
+    const n = validNumbers();
+    const s = segments(msgEl.value);
+    const total = n * s;
+    countRec.textContent = n.toLocaleString();
+    segsEl.textContent = s;
+    totalEl.textContent = total.toLocaleString();
+    costEl.textContent = 'GH₵ ' + (total * RATE).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    charHint.textContent = msgEl.value.length + ' characters · ' + (s || 0) + ' segment' + (s === 1 ? '' : 's');
+  }
+
+  [recEl, msgEl].forEach(el => el.addEventListener('input', update));
+
+  const toast = document.getElementById('toast');
+  let timer;
+  function showToast(text) {
+    toast.textContent = text;
+    toast.classList.add('show');
+    clearTimeout(timer);
+    timer = setTimeout(() => toast.classList.remove('show'), 3200);
+  }
+
+  document.getElementById('sendBtn').addEventListener('click', () => {
+    const n = validNumbers();
+    if (!senderEl.value.trim()) return showToast('Please enter a sender ID.');
+    if (n === 0) return showToast('Add at least one valid Ghana phone number.');
+    if (!msgEl.value.trim()) return showToast('Your message is empty.');
+    showToast('Ready to send ' + n + ' messages? Create an account to go live.');
+  });
+
+  update();
+</script>
+</body>
+</html>
